@@ -1,11 +1,24 @@
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
 require('dotenv').config();
+//import routes
+const userRoutes = require('./routes/user');
+
+//app
+const app = express();
+
+//database
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+}).then(()=> 
+    console.log('DB Connected')
+)
 
 
-app.get('/', (req, res)=>{
-    res.send('hello bee');
-});
+//routes middleware
+app.use(userRoutes);
 
 
 const port = process.env.PORT || 8000;
