@@ -30,7 +30,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
-app.user(cors());
+app.use(cors());
 
 //routes middleware
 app.use('/api' , authRoutes);
