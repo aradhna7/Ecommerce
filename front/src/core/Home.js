@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Layout from './Layout'
 import {getProducts} from './apiCore'
 import Card from './Card'
+import Search from './Search'
 
 const Home = () => {
 
@@ -47,10 +48,13 @@ const Home = () => {
     return (
         <div>
             <Layout title="Home Page" description="Node React E-Commerce App" className="container-fluid">
+                <Search />
                 <h2 className="mb-4">Best Sellers</h2>
                 <div className="row">
                     {productsBySell.map((p,i)=>(
-                        <Card product={p} key={i}/>
+                        <div key={i} className="col-6 col-md-3 mb-3">
+                            <Card product={p} />
+                        </div>
                     ))}
                 </div>
                 
@@ -58,7 +62,9 @@ const Home = () => {
                 <h2 className="mb-4">New Arrivals</h2>
                 <div className="row">
                     {productsByArrival.map((p,i)=>(
-                        <Card product={p} key={i}/>
+                        <div key={i} className="col-6 col-md-3 mb-3">
+                            <Card product={p} />
+                        </div>
                     ))}
                 </div>
                 

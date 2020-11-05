@@ -10,7 +10,9 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 //find product by id
 exports.productById = async (req, res, next, id) =>{
 
-    Product.findById(id).exec((err, product)=>{
+    Product.findById(id)
+    .populate("category")
+    .exec((err, product)=>{
         if(err || !product){
             return res.status(400).json({
                 error: 'Product not found'
@@ -306,4 +308,31 @@ exports.photo = (req, res)=>{
 
     }
     next();
+}
+
+
+
+exports.listSearch = (req, res) =>{
+    //create query obj to hold search and category value
+    const query = {}
+    
+    //assign search value to query.name
+    if(req.query.search){
+        query.name = {$regex: req.query.search, $options: 'i'}
+        //assign category value to query.category
+        if(req.query.category && req.query.category !== 'All'){
+            query.category = req.query.category;
+        }
+
+        //find objects based on query with 2 properties
+        //search and category
+        Product.find(query, (err, product)=>{
+            if(err){
+                return res.status(400).json({
+                    error: errorHandler(err)
+                })
+            }
+            res.json(product);
+        }).select('-photo')
+    }
 }

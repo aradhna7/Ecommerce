@@ -125,7 +125,9 @@ const Shop = () => {
                         <h2 className="mb-4"></h2>
                         <div className="row">
                             {filteredResult ? (filteredResult.map((product,i)=>(
-                                    <Card key={i} product={product} />
+                                <div key={i} className="col-6 col-md-3 mb-3">
+                                    <Card product={product} />
+                                </div>
                             ))): (
                                 <h3>No product found</h3>
                             )}

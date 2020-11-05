@@ -1,7 +1,8 @@
 import { API } from "../config";
+import queryString from 'query-string'
 
 
-//get all categories
+//get all products
 export const getProducts = (sortBy) =>{
     return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`,{
         method:'GET'
@@ -49,6 +50,52 @@ export const getFilteredProducts = (skip, limit, filters={}) =>{
     })
     .then(response=>{
         return response.json();
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+
+
+//search
+export const list = (params) =>{
+    const query = queryString.stringify(params);
+    console.log(query);
+    return fetch(`${API}/products/search?${query} `,{
+        method:'GET'
+    })
+    .then(response=>{
+        return response.json()
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+
+//get particular product
+export const read = (productId) =>{
+
+    return fetch(`${API}/product/${productId}`,{
+        method:'GET'
+    })
+    .then(response=>{
+        return response.json()
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+
+//get related products
+export const listRelated = (productId) =>{
+    return fetch(`${API}/products/related/${productId}`,{
+        method:'GET'
+    })
+    .then(response=>{
+        return response.json()
     })
     .catch(err=>{
         console.log(err);
