@@ -13,6 +13,7 @@ import UserDashboard from './user/UserDashboard'
 import './App.css'
 import Shop from './core/Shop'
 import Product from './core/Product'
+import Cart from './core/Cart'
 
 
 
@@ -28,6 +29,7 @@ const Routes = () => {
                 <AdminRoute exact path="/admin/dashboard" component={AdminDashboard}/>
                 <AdminRoute exact path="/create/category" component={AddCategory}/>
                 <AdminRoute exact path="/create/product" component={AddProduct}/>
+                <Route exact path="/cart" component={Cart}/>
                 <Route exact path = "/product/:productId" component={Product} />
             </Switch>
             

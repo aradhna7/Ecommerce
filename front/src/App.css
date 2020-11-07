@@ -53,6 +53,14 @@
 }
 
 
+.cart-badge, .cart-badge:hover{
+    border-radius: 80%;
+    padding: 4px;
+    font-size: 12px;
+    font-style: italic;
+    background: black;
+}
+
 .jumbotron h2{
     margin-top: -10px;
 }
