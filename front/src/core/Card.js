@@ -36,6 +36,7 @@ const Card = ({product, showViewButton = true, showAddToButton=true, cartUpdate=
     }
 
     const handleChange = productId => e=>{
+        console.log(e.target.value);
         setCount(e.target.value< 1 ? 1 : e.target.value);
         if(e.target.value>1){
             updateItem(productId, e.target.value);
@@ -50,6 +51,8 @@ const Card = ({product, showViewButton = true, showAddToButton=true, cartUpdate=
                 </div>
                 <input type="number" className="form-control" value={count} onChange={handleChange(product._id)} />
             </div>
+            
+            
         </div>
     }
 
