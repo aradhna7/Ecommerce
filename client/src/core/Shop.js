@@ -110,7 +110,7 @@ const Shop = () => {
         <div>
             <Layout title="Shop Page" description="Shop and find books of your choice" className="container-fluid">
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-2">
                         <h4>Filter by categories</h4>
                         <ul>
                             <Checkbox categories={categories} handleFilters={(filters, filterBy)=>handleFilters(filters, 'category')} />
@@ -121,7 +121,7 @@ const Shop = () => {
                             <RadioBox prices={prices} handleFilters={(filters, filterBy)=>handleFilters(filters, 'price')} />
                         </div>
                     </div>
-                    <div className="col-9">
+                    <div className="col-10">
                         <h2 className="mb-4"></h2>
                         <div className="row">
                             {filteredResult ? (filteredResult.map((product,i)=>(
